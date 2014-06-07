@@ -14,3 +14,17 @@ before_script:
  - ./configure --disable-dependency-tracking
 
 script: make check
+
+env:
+  global:
+   - secure: "AHO0uBeGM-aaK-8Vacg1Xw"
+
+addons:
+  coverity_scan:
+    project:
+      name: "jedisct1/libsodium"
+      description: "libsodium"
+      notification_email: coverityscan@pureftpd.org
+      build_command_prepend: "./configure"
+      build_command: "make -j4"
+      branch_pattern: coverity_scan
